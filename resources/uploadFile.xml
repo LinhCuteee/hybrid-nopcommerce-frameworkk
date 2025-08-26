@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Nopcommerce Automation Test">
+
+    <parameter name="url" value="https://blueimp.github.io/jQuery-File-Upload/"></parameter>
+
+    <test name="Run on Chrome browser">
+        <parameter name="browser" value="CHROME"></parameter>
+        <classes>
+            <class name="com.jquery.cases.Level_12_Upload_File" />
+        </classes>
+    </test>
+
+  <!--  <test name="Run on FireFox browser">
+        <parameter name="browser" value="FIREFOX"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_09_Switch_Site_URL" />
+        </classes>
+    </test>
+
+    <test name="Run on Edge browser">
+        <parameter name="browser" value="EDGE"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_09_Switch_Site_URL" />
+        </classes>
+    </test>-->
+
+</suite>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Nopcommerce Automation Test">
+
+    <listeners>
+        <listener class-name="commons.MethodListener"/>
+        <listener class-name="reportConfigs.AllureListener"/>
+    </listeners>
+
+    <parameter name="userUrl" value="https://demo.nopcommerce.com/"></parameter>
+    <parameter name="adminUrl" value="https://admin-demo.nopcommerce.com/"></parameter>
+
+
+    <test name="Run on Chrome browser">
+        <parameter name="browser" value="CHROME"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_16_Allure_Extent" />
+        </classes>
+    </test>
+
+   <!-- <test name="Run on FireFox browser">
+        <parameter name="browser" value="FIREFOX"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_16_Allure_Extent" />
+        </classes>
+    </test>
+
+    <test name="Run on Edge browser">
+        <parameter name="browser" value="EDGE"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_16_Allure_Extent" />
+        </classes>
+    </test>-->
+
+</suite>

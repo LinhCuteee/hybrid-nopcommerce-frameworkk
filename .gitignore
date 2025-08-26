@@ -29,5 +29,9 @@ bin/
 
 ### Mac OS ###
 .DS_Store
-/allure-results/
+
 /allure-report/
+/test-output/
+/allure-results/
+/logs/
+/log2/

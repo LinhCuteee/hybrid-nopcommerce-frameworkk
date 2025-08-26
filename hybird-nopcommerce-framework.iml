@@ -7,10 +7,17 @@
       <sourceFolder url="file://$MODULE_DIR$/interfaces" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/testcases" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/javaSDET" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/allure-report" />
+      <excludeFolder url="file://$MODULE_DIR$/test-output" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="selenium-testng" level="project" />
-    <orderEntry type="library" name="selenium-testng (2)" level="project" />
+    <orderEntry type="library" name="selenium-testng (" level="project" />
+    <orderEntry type="library" name="log4j2" level="project" />
+    <orderEntry type="library" name="ReportNG" level="project" />
+    <orderEntry type="library" name="ExtentRepor5" level="project" />
+    <orderEntry type="library" name="allure-2.29.1" level="project" />
   </component>
 </module>
