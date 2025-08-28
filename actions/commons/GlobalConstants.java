@@ -21,7 +21,7 @@ public class GlobalConstants {
     public static final String ADMIN_PASSWORD = "guru99com";
 
 //  Wait Information
-    public static final long SHORT_TIMEOUT = 10;
+    public static final long SHORT_TIMEOUT = 5;
     public static final long LONG_TIMEOUT  = 30;
 
 //  Download / Upload Path
@@ -43,5 +43,15 @@ public class GlobalConstants {
 //  Data Test / Environment Config
     public static final String DATA_TEST_PATH       = PROJECT_PATH + SEPARATOR+"dataTest"+SEPARATOR;
     public static final String ENVIRONMENT_CONFIG_PATH = PROJECT_PATH + SEPARATOR+"environmentConfig"+SEPARATOR;
+
+
+    public static final String JIRA_SITE_URL    = "https://automationfccom.atlassian.net/";
+    public static final String JIRA_USERNAME    = "linhnguyenn.12052003@gmail.com";
+    public static final String JIRA_API_KEY     = "ATATT3xFfGF0lmornXpRdxLo0E3xdiASOwAFyBspks8gbi0Qb7I-jcXerndUpRSft6csi9Tw9X3IERbA-bXWnaZ-qGU1iAFIHJ9AWZrpdC94a0qc0Za_aEF9YH-ef6uSDJfkUwCNa777e7Drv2W38I3F2y0EevAsGleqG5q9vlL5FS6Ohc4J67E=F38C3004";
+    public static final String JIRA_PROJECT_KEY     = "SCRUM";
+
+
+
+
 
 }

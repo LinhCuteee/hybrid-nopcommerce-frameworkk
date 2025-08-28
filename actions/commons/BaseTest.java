@@ -126,7 +126,7 @@ public class BaseTest {
     @BeforeSuite
     public void deleteFileInReport() {
         // Remove all file in ReportNG screenshot (image)
-        deleteAllFileInFolder("reportNGImage");
+       // deleteAllFileInFolder("reportNGImage");
 
         // Remove all file in Allure attachment (json file)
         deleteAllFileInFolder("allure-report");
@@ -138,17 +138,21 @@ public class BaseTest {
             String pathFolderDownload = GlobalConstants.PROJECT_PATH + File.separator + folderName;
             File file = new File(pathFolderDownload);
             File[] listOfFiles = file.listFiles();
-            if (listOfFiles.length != 0) {
-                for (int i = 0; i < listOfFiles.length; i++) {
-                    if (listOfFiles[i].isFile() && !listOfFiles[i].getName().equals("environment.properties")) {
-                        new File(listOfFiles[i].toString()).delete();
+
+            if (listOfFiles != null && listOfFiles.length > 0) {
+                for (File f : listOfFiles) {
+                    if (f.isFile() && !f.getName().equals("environment.properties")) {
+                        f.delete();
                     }
                 }
+            } else {
+                System.out.println("Không tìm thấy thư mục hoặc thư mục rỗng: " + pathFolderDownload);
             }
         } catch (Exception e) {
-            System.out.print(e.getMessage());
+            e.printStackTrace();
         }
     }
+
     protected int generateRandomNumber() {
         return new Random().nextInt(9999);
     }

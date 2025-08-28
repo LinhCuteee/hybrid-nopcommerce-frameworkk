@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Nopcommerce Automation Test">
+<suite name="JQuery Automation Test">
 
     <parameter name="url" value="https://blueimp.github.io/jQuery-File-Upload/"></parameter>
 

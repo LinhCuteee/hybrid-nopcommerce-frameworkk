@@ -11,12 +11,14 @@ import pageObjects.nopCommerce.Users.UserAdressesPO;
 import pageObjects.nopCommerce.Users.UserCustomerInfoPO;
 import pageObjects.nopCommerce.Users.UserOrderPO;
 import pageObjects.nopCommerce.Users.UserRewardPointPO;
+import pageUIs.facebook.LoginUI;
 import pageUIs.nopCommerce.BasePageUI;
 import pageUIs.nopCommerce.Users.UserHomePageUI;
 
 import java.awt.*;
 import java.time.Duration;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 
@@ -306,14 +308,39 @@ public class BasePage {
         }
     }
 
+    public void overrideGlobalTimeout(WebDriver driver, long time) {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(time));
+    }
+
+
     public Boolean isElementDisplay(WebDriver driver, String locator) {
         return getElement(driver, locator).isDisplayed();
+        /*try {
+            return isElementDisplay(driver, LoginUI.COMFIRM_EMAIL_ADDRESS_TEXTBOX);
+        } catch (NoSuchElementException e) {
+            return false;
+        }*/
+    }
+
+    public Boolean isElementUndisplay(WebDriver driver, String locator) {
+        overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+        List<WebElement> elements = getListElement(driver, LoginUI.COMFIRM_EMAIL_ADDRESS_TEXTBOX);
+        overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+
+        if (elements.size() > 0) {
+            return false;
+        } else if (elements.size() == 0 && elements.get(0).isDisplayed()) {
+            return true;
+        } else {
+            return true;
+        }
     }
 
 
     public Boolean isElementDisplay(WebDriver driver, String locator, String... restParametor) {
         return getElement(driver, castParametor(locator, restParametor)).isDisplayed();
     }
+
 
     public Boolean iselementSelected(WebDriver driver, String locator) {
         return getElement(driver, locator).isSelected();
