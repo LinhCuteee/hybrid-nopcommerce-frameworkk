@@ -94,7 +94,7 @@ public class Level_10_Dynamic_Locator extends BaseTest {
         orderPage = GeneratorPage.getUserOrderPage(driver);
         ///.......*/
 
-        orderPage.openSideBarLinkByPageName("Customer info");
+       customerPage= orderPage.openSideBarLinkByPageName("Customer info");
         customerPage = GeneratorPage.getUserCustomerInforPage(driver);
         ///.....
 

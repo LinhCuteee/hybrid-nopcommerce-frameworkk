@@ -4,7 +4,6 @@
 
     <listeners>
         <listener class-name="commons.MethodListener"/>
-        <!--<listener class-name="jiraConfigs.JiraListener"></listener>-->
     </listeners>
 
     <parameter name="userUrl" value="https://demo.nopcommerce.com/"></parameter>
@@ -14,7 +13,7 @@
     <test name="Run on Chrome browser">
         <parameter name="browser" value="CHROME"></parameter>
         <classes>
-            <class name="com.nopcommerce.users.Level_16_Allure_Extent" />
+            <class name="com.nopcommerce.users.Level_19_Pattern_Object" />
         </classes>
     </test>
 

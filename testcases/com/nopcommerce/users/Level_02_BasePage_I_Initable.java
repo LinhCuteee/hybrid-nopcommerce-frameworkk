@@ -77,7 +77,7 @@ public class Level_02_BasePage_I_Initable {
         basePage.waitForElementClickable(driver,"//a[@class='ico-account']");
         basePage.clickToElement(driver,"//a[@class='ico-account']");
 
-        Assert.assertTrue(basePage.iselementSelected(driver,"//input[@id='gender-male']"));
+        Assert.assertTrue(basePage.iSelementSelected(driver,"//input[@id='gender-male']"));
 
         Assert.assertEquals(basePage.getAttributeValue(driver,"//input[@id='FirstName']","value"),firtName);
         Assert.assertEquals(basePage.getAttributeValue(driver,"//input[@id='LastName']","value"),lastName);

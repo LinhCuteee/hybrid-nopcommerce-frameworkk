@@ -75,7 +75,7 @@ public class Level_02_BasePage_III_Inheritance extends BasePage{
         waitForElementClickable(driver,"//a[@class='ico-account']");
         clickToElement(driver,"//a[@class='ico-account']");
 
-        Assert.assertTrue(iselementSelected(driver,"//input[@id='gender-male']"));
+        Assert.assertTrue(iSelementSelected(driver,"//input[@id='gender-male']"));
 
         Assert.assertEquals(getAttributeValue(driver,"//input[@id='FirstName']","value"),firtName);
         Assert.assertEquals(getAttributeValue(driver,"//input[@id='LastName']","value"),lastName);
