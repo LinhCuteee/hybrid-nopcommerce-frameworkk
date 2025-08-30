@@ -10,10 +10,11 @@
     <parameter name="adminUrl" value="https://admin-demo.nopcommerce.com/"></parameter>
 
 
-    <test name="Run on Chrome browser">
+    <test name="Run on Chrome browser" preserve-order="true">
         <parameter name="browser" value="CHROME"></parameter>
         <classes>
-            <class name="com.nopcommerce.users.Level_19_Pattern_Object" />
+            <class name="com.nopcommerce.common.Login"></class>
+            <class name="com.nopcommerce.users.Level_20_Share_State" />
         </classes>
     </test>
 
