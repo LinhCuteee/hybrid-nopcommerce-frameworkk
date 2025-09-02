@@ -52,9 +52,10 @@ public class Login extends BaseTest {
         Assert.assertTrue(homePage.isMyAccountLinkDislayed());
 
         //Get cookie
+        //đã lưu cookie vào biến nopcommerce 
         nopcommerceCookie = homePage.getAllCookie(driver);
 
-        driver.quit();
+        closeBrowserDriver();
     }
 
 
