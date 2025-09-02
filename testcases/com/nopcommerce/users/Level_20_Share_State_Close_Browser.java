@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import pageObjects.nopCommerce.GeneratorPage;
 import pageObjects.nopCommerce.Users.*;
 
-public class Level_20_Share_State extends BaseTest {
+public class Level_20_Share_State_Close_Browser extends BaseTest {
     //Pre_Condition
     @Parameters({"browser","userUrl"})
     @BeforeClass
@@ -44,9 +44,9 @@ public class Level_20_Share_State extends BaseTest {
 
 
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void afterClass() {
-        driver.quit();
+        closeBrowserDriver();
     }
 
     //Declare variable

@@ -14,7 +14,7 @@
         <parameter name="browser" value="CHROME"></parameter>
         <classes>
             <class name="com.nopcommerce.common.Login"></class>
-            <class name="com.nopcommerce.users.Level_20_Share_State" />
+            <class name="com.nopcommerce.users.Level_20_Share_State_Close_Browser" />
         </classes>
     </test>
 
