@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Nopcommerce Automation Test">
+
+    <listeners>
+        <listener class-name="commons.MethodListener"/>
+    </listeners>
+
+    <parameter name="url" value="http://localhost:97/orangehrm-5.6.1/web/index.php/auth/login"></parameter>
+
+
+    <test name="Run on Chrome browser" preserve-order="true">
+        <parameter name="browser" value="CHROME"></parameter>
+        <classes>
+            <class name="com.orangeHRM.pim.PM_01_Employee" />
+        </classes>
+    </test>
+
+   <!-- <test name="Run on FireFox browser">
+        <parameter name="browser" value="FIREFOX"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_16_Allure_Extent" />
+        </classes>
+    </test>
+
+    <test name="Run on Edge browser">
+        <parameter name="browser" value="EDGE"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_16_Allure_Extent" />
+        </classes>
+    </test>-->
+
+</suite>

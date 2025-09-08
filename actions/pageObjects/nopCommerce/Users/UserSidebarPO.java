@@ -27,15 +27,13 @@ public class UserSidebarPO extends BasePage {
     public UserOrderPO openOrderPage() {
         waitForElementClickable(driver, UserSidebarPageUI.ORDER_LINK);
         clickToElement(driver,  UserSidebarPageUI.ORDER_LINK);
-        return new UserOrderPO(driver);
-
+        return GeneratorPage.getUserOrderPage(driver);
     }
-
 
     public UserRewardPointPO openRewardPoint() {
         waitForElementClickable(driver, UserSidebarPageUI.REWARDPOINTLINK);
         clickToElement(driver, UserSidebarPageUI.REWARDPOINTLINK);
-        return new UserRewardPointPO(driver);
+        return GeneratorPage.getUserRewardPointPage(driver);
     }
 
     //Dùng cách này khi có <20 Page
@@ -56,9 +54,4 @@ public class UserSidebarPO extends BasePage {
                 throw new IllegalArgumentException("Page name is not valid.");
         }
     }
-
-
-    public void openSideBarLinkByPageNames(String value){
-        waitForElementClickable(driver, UserSidebarPageUI.DYNAMIC_LINK_BY_PAGE_NAME,value);
-        clickToElement(driver,UserSidebarPageUI.DYNAMIC_LINK_BY_PAGE_NAME,value);}
 }

@@ -15,6 +15,7 @@ import pageObjects.nopCommerce.Users.UserRewardPointPO;
 import pageUIs.facebook.LoginUI;
 import pageUIs.nopCommerce.BasePageUI;
 import pageUIs.nopCommerce.Users.UserHomePageUI;
+import pageUIs.orangeHRM.pim.employee.PersonalDetailPageUI;
 
 import java.time.Duration;
 import java.util.List;
@@ -205,7 +206,14 @@ public class BasePage {
     }
 
     public void senkeyToElement(WebDriver driver, String locator, String keyToSend) {
-        getElement(driver, locator).clear();
+        Keys key=null;
+        if(GlobalConstants.OS_NAME.startsWith("Windows")){
+            key=Keys.CONTROL;
+        }else {
+            key=Keys.COMMAND;;
+        }
+        getElement(driver,locator).sendKeys(Keys.chord(key, "a", Keys.BACK_SPACE));
+        sleepInSecond(1);
         getElement(driver, locator).sendKeys(keyToSend);
     }
 
@@ -242,17 +250,14 @@ public class BasePage {
 
         WebDriverWait explicit = new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
 
-        List<WebElement> allItems = explicit.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(childLocator)));
+        List<WebElement> allItems = explicit.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(childLocator)));
 
         for (WebElement item : allItems) {
             if (item.getText().trim().equals(expectedItem)) {
-                JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-                jsExecutor.executeScript("arguments[0].scrollIntoView(true);", item);
                 item.click();
                 break;
             }
         }
-
     }
 
     public String getAttributeValue(WebDriver driver, String locator, String attributeName) {
@@ -269,6 +274,10 @@ public class BasePage {
 
     public String getTextElement(WebDriver driver, String locator, String... restParametor) {
         return getElement(driver, castParametor(locator, restParametor)).getText();
+    }
+
+    public Dimension getElementSize(WebDriver driver, String locator) {
+        return getElement(driver, locator).getSize();
     }
 
     public String getCssValue(WebDriver driver, String locator, String propertyName) {
@@ -430,7 +439,12 @@ public class BasePage {
     }
 
     public void clickToElementByJS(WebDriver driver, String locator) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click;", getElement(driver, locator));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", getElement(driver, locator));
+        sleepInSecond(2);
+    }
+
+    public void clickToElementByJS(WebDriver driver, String locator,String restParametor) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", getElement(driver, castParametor(locator,restParametor)));
         sleepInSecond(2);
     }
 
@@ -514,19 +528,24 @@ public class BasePage {
         new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(locator)));
     }
 
+    public boolean waitForListElementInvisible(WebDriver driver, String locator) {
+        return new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.invisibilityOfAllElements(getListElement(driver, locator)));
+    }
+
     public void waitForElementPresence(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.presenceOfElementLocated(getByLocator(locator)));
     }
 
-    public void waitForListElemnetPresence(WebDriver driver, String locator) {
-        new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(locator)));
+    public List<WebElement> waitForListElemnetPresence(WebDriver driver, String locator) {
+       return new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(locator)));
     }
 
     public Set<Cookie> getAllCookie(WebDriver driver) {
         return driver.manage().getCookies();
     }
-    public void setCookie(WebDriver driver, Set<Cookie> cookies){
-        for(Cookie cookie : cookies){
+
+    public void setCookie(WebDriver driver, Set<Cookie> cookies) {
+        for (Cookie cookie : cookies) {
             driver.manage().addCookie(cookie);
         }
         sleepInSecond(2);
@@ -597,5 +616,15 @@ public class BasePage {
     public String getTextBoxAttributeValueByID(WebDriver driver, String attributeName, String... restParametor) {
         waitForElementVisible(driver, BasePageUI.TEXTBOX_BY_ID, restParametor);
         return getAttributeValue(driver, BasePageUI.TEXTBOX_BY_ID, attributeName, restParametor);
+    }
+
+    public boolean waitAllIconInVisible(WebDriver driver) {
+        return waitForListElementInvisible(driver, BasePageUI.LOADING_ICON);
+    }
+
+    public boolean isSuccessMesaagerDisplayed(WebDriver driver) {
+        waitForElementVisible(driver, BasePageUI.SUCCESS_MASSAGER);
+        return isElementDisplay(driver, BasePageUI.SUCCESS_MASSAGER);
+
     }
 }
